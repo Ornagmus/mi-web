@@ -1,0 +1,24 @@
+.not-found-container {
+
+    
+  
+
+    background-color: #f7984a;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .not-found-title {
+    font-size: 64px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 16px;
+  }
+  
+  .not-found-message {
+    font-size: 24px;
+    color: #ffffff;
+  }
+  
