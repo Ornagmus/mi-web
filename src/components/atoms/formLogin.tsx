@@ -4,38 +4,31 @@ interface FormLoginProps {
   onSubmit: (formData: FormData) => void;
 }
 
-interface FormData {
-  correo: string;
-  contraseña: string;
-}
-
 const FormLogin: React.FC<FormLoginProps> = ({ onSubmit }) => {
-  const [formData, setFormData] = useState<FormData>({
-    correo: '',
-    contraseña: '',
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+
     onSubmit(formData);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Correo electrónico:</label>
-        <input type="email" name="correo" value={formData.correo} onChange={handleInputChange} />
+        <label>Email:</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div>
-        <label>Contraseña:</label>
-        <input type="password" name="contraseña" value={formData.contraseña} onChange={handleInputChange} />
+        <label>Password:</label>
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
-      <button type="submit">Iniciar sesión</button>
+      <button type="submit">Iniciar Sesión</button>
     </form>
   );
 };

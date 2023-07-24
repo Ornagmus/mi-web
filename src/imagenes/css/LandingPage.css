@@ -1,22 +1,45 @@
+
+
+
+/* Estilos generales para el cuerpo de la página */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+ 
+}
+
+.landing-page {
+  margin: 0 auto; /* Centrar horizontalmente */
+
+}
+
+/* Estilos para el contenedor principal del componente LandingPage */
 .landing-container {
   background-color: #fff;
   text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
 }
 
+
+
+/* Estilos para el resto del contenido de la página */
 .color-band {
   background-color: #f7984a;
   padding: 20px 0;
 }
 
 .landing-content {
-  background-color:  #f7984a;
-  flex-direction: column;
+  background-color: #f7984a;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 10px 20px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   gap: 40px;
+
 }
 
 .landing-title {
@@ -63,5 +86,3 @@
 .landing-link:hover {
   background-color: #000000;
 }
-
-

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '../imagenes/css/NotFoundPage.css';
 import NavBar from '../components/atoms/NavBar';
 

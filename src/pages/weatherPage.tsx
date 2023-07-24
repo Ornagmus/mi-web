@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import '../imagenes/css/WeatherPage.css'
+import { useState, useEffect } from 'react';
+import '../imagenes/css/WeatherPage.css';
 import NavBar from '../components/atoms/NavBar';
 
+interface WeatherData {
+  location: {
+    name: string;
+    localtime: string;
+  };
+  current: {
+    temp_c: number;
+  };
+}
+
 const WeatherPage = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<WeatherData | null>(null);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        'http://api.weatherapi.com/v1/forecast.json?key=1d172d3904e246849d3183628230802&q=Stockholm&days=6&aqi=no&alerts=no'
+        'https://api.weatherapi.com/v1/current.json?key=21ced9684a904d05a49103515231307&q=Cáceres&aqi=no'
       );
-      const jsonData = await response.json();
+      const jsonData: WeatherData = await response.json();
       setData(jsonData);
     } catch (error) {
       console.log('Error al obtener los datos del clima:', error);
@@ -21,22 +31,27 @@ const WeatherPage = () => {
     fetchData();
   }, []);
 
-  if (!data) {
-    return <p className="loading">Cargando datos del clima...</p>;
-  }
+  const renderWeatherData = () => {
+    if (!data) {
+      return <p className="loading">Cargando datos del clima...</p>;
+    }
+
+    return (
+      <div className="weather-container">
+        <h3 className="location">{data.location.name}</h3>
+        <div className="weather-info">
+          <p className="temperature">{data.current.temp_c}°C</p>
+          <p className="localtime">{data.location.localtime}</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
-
     <div>
-    <NavBar />
-    <h1>El Tiempo</h1>
-    <div className="weather-container">
-      <h3 className="location">{data.location.name}</h3>
-      <div className="weather-info">
-        <p className="temperature">{data.current.temp_c}°C</p>
-        <p className="localtime">{data.location.localtime}</p>
-      </div>
-    </div>
+      <NavBar />
+      <h1>El Tiempo</h1>
+      {renderWeatherData()}
     </div>
   );
 };

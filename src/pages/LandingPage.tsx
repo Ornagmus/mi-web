@@ -1,12 +1,13 @@
-import React from 'react';
+//import React from 'react';
 import '../imagenes/css/LandingPage.css';
 import NavBar from '../components/atoms/NavBar';
 
 const LandingPage = () => {
   return (
     <div className="landing-page">
-      <NavBar />
+      
       <div className="landing-container">
+      <NavBar />
         <div className="color-band"></div>
         <h1 className="landing-title">Bienvenido a la página de José María Ramiro</h1>
         <div className="landing-content">
@@ -24,7 +25,7 @@ const LandingPage = () => {
             </div>
             <a className="landing-link" href="https://www.flickr.com/photos/142706684@N08/with/28763203454/" target="_blank" rel="noopener noreferrer">Ver más ilustraciones y cómics</a>
           </div>
-        </div>
+          </div>
       </div>
     </div>
   );

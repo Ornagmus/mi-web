@@ -1,5 +1,5 @@
 import React from 'react';
-import FormLogin from '../components/atoms/formLogin';
+import FormLogin from '../components/atoms/FormLogin';
 import NavBar from '../components/atoms/NavBar';
 
 const LoginPage: React.FC = () => {
@@ -10,11 +10,11 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-        <NavBar />
-    <div>
-      <h1>Página de Inicio de Sesión</h1>
-      <FormLogin onSubmit={handleFormSubmit} />
-    </div>
+      <NavBar />
+      <div>
+        <h1>Página de Inicio de Sesión</h1>
+        <FormLogin onSubmit={handleFormSubmit} />
+      </div>
     </div>
   );
 };

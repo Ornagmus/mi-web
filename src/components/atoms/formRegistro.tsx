@@ -4,28 +4,19 @@ interface FormRegistroProps {
   onSubmit: (formData: FormData) => void;
 }
 
-interface FormData {
-  nombre: string;
-  apellidos: string;
-  correo: string;
-  contraseña: string;
-}
-
 const FormRegistro: React.FC<FormRegistroProps> = ({ onSubmit }) => {
-  const [formData, setFormData] = useState<FormData>({
-    nombre: '',
-    apellidos: '',
-    correo: '',
-    contraseña: '',
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
+  const [nombre, setNombre] = useState('');
+  const [email, setEmail] = useState('');
+  // Agrega más estados para los otros campos del formulario si es necesario
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('email', email);
+    // Agrega más campos al formData si es necesario
+
     onSubmit(formData);
   };
 
@@ -33,20 +24,13 @@ const FormRegistro: React.FC<FormRegistroProps> = ({ onSubmit }) => {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Nombre:</label>
-        <input type="text" name="nombre" value={formData.nombre} onChange={handleInputChange} />
+        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
       </div>
       <div>
-        <label>Apellidos:</label>
-        <input type="text" name="apellidos" value={formData.apellidos} onChange={handleInputChange} />
+        <label>Email:</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
-      <div>
-        <label>Correo electrónico:</label>
-        <input type="email" name="correo" value={formData.correo} onChange={handleInputChange} />
-      </div>
-      <div>
-        <label>Contraseña:</label>
-        <input type="password" name="contraseña" value={formData.contraseña} onChange={handleInputChange} />
-      </div>
+      {/* Agrega más campos del formulario aquí */}
       <button type="submit">Registrarse</button>
     </form>
   );
