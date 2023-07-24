@@ -1,5 +1,6 @@
 import React from 'react';
-import '../../imagenes/css/NotFoundPage.css';
+import '../imagenes/css/NotFoundPage.css';
+import NavBar from '../components/atoms/NavBar';
 
 const NotFoundPage = () => {
   const randomJoke = [
@@ -13,9 +14,13 @@ const NotFoundPage = () => {
   const joke = randomJoke[randomIndex];
 
   return (
+    <div>
+    <NavBar />
     <div className="not-found-container">
+      
       <h1 className="not-found-title">404</h1>
       <p className="not-found-message">{joke}</p>
+    </div>
     </div>
   );
 };

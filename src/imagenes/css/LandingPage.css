@@ -10,6 +10,7 @@
 
 .landing-content {
   background-color:  #f7984a;
+  flex-direction: column;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 10px 20px 4px rgba(0, 0, 0, 0.2);
@@ -62,3 +63,5 @@
 .landing-link:hover {
   background-color: #000000;
 }
+
+

@@ -1,0 +1,37 @@
+.weather-container {
+    background-color:  #f7984a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .location {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .weather-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .temperature {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .localtime {
+    font-size: 16px;
+    color: white;
+  }
+  
+  .landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  

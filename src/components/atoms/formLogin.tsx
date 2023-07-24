@@ -1,64 +1,43 @@
 import React, { useState } from 'react';
 
-const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+interface FormLoginProps {
+  onSubmit: (formData: FormData) => void;
+}
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+interface FormData {
+  correo: string;
+  contraseña: string;
+}
+
+const FormLogin: React.FC<FormLoginProps> = ({ onSubmit }) => {
+  const [formData, setFormData] = useState<FormData>({
+    correo: '',
+    contraseña: '',
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí puedes realizar las acciones que desees con los datos ingresados
-    console.log('Email:', email);
-    console.log('Password:', password);
+    onSubmit(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xs mx-auto mt-8">
-      <div className="bg-orange-100 rounded-md p-4 mb-4">
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-            Email:
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-orange-700 text-sm font-bold mb-2" htmlFor="password">
-            Password:
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" value={formData.correo} onChange={handleInputChange} />
       </div>
-      <div className="text-center">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Iniciar sesión
-        </button>
+      <div>
+        <label>Contraseña:</label>
+        <input type="password" name="contraseña" value={formData.contraseña} onChange={handleInputChange} />
       </div>
+      <button type="submit">Iniciar sesión</button>
     </form>
   );
 };
 
-export default LoginForm;
+export default FormLogin;

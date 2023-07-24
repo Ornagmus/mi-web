@@ -1,0 +1,29 @@
+.navbar {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: yellow;
+  }
+  
